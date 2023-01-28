@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{data.isEdit ? 'Редактирование' : 'Создание'}} записи</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <div>
+      <div class="tell-flex">
+        <mat-form-field color="accent" appearance="fill" class="app-list-modal__inputMain">
+          <mat-label>ФИО:</mat-label>
+          <input matInput placeholder="Лешонков Антон Александрович" [formControl]="_fio" required>
+          <mat-error *ngIf="_fio.invalid">Заполните поле "ФИО"!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field color="accent" appearance="fill" class="tell-m-l-2xs app-list-modal__inputMain">
+          <mat-label>Телефон:</mat-label>
+          <input matInput placeholder="89301230552" [formControl]="_tell" required>
+          <mat-error *ngIf="_tell.invalid">Заполните поле "Телефон"!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="tell-flex tell-flex-direction-column">
+        <mat-form-field color="accent" appearance="fill">
+          <mat-label>Адресс:</mat-label>
+          <input matInput placeholder="г.Рыбинск" [formControl]="_address">
+        </mat-form-field>
+      </div>
+      <div class="tell-flex tell-w-full">
+        <mat-form-field appearance="fill" class="tell-w-full" color="accent">
+          <mat-label>Доп. номер</mat-label>
+          <input matInput placeholder="Дополнительный номер..." [formControl]="_extra">
+        </mat-form-field>
+        <button mat-fab class="tell-m-l-2xs" disabled="{{!_extra.value}}" (click)="_addExtraTell()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div class="tell-flex app-list-modal__extra">
+        <span class="tell-flex tell-align-items-center tell-p-l-2xs tell-p-r-2xs tell-m-r-2xs app-list-modal__extra-item" *ngFor="let list of _extraCollections">
+          {{list}}
+          <button mat-fab class="tell-m-l-2xs" (click)="_deleteExtraTell(list)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      </div>
+
+      <button disabled="{{_tell.invalid || _fio.invalid}}" mat-button (click)="_save(data.isEdit)">{{data.isEdit ? 'Обновить' : 'Сохранить'}}</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

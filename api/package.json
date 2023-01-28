@@ -1,0 +1,15 @@
+{
+  "name": "tells-help",
+  "version": "0.0.0",
+  "scripts": {
+    "server": "node app.js"
+  },
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
+  }
+}

@@ -1,0 +1,29 @@
+<mat-selection-list #listOption class="app-list-user">
+  <div *ngIf="!lists.length" class="app-list-user__hint">Записей не найдено. Возможно пора создать новую!</div>
+  <mat-list-option (click)="_handlerListOption(listOption.selectedOptions.selected.length, list.id)" *ngFor="let list of lists;  let i = index" class="app-list-user__item tell-flex {{i ===  0 && ' app-list-user__item-first'}}">
+    <div class="tell-flex app-list-user__item-container">
+      <div class="tell-p-l-2xs tell-p-r-2xs app-list-user__item-container-user">
+        <div class="tell-truncate app-list-user__item-container-user-fio" title="{{list.fio}}">{{list.fio}}</div>
+        <div class="tell-flex">
+          <div class="app-list-user__item-container-user-tell" title="{{_JSONParse(list.tells).main}}">{{_JSONParse(list.tells).main}}</div>
+          <div class="tell-truncate tell-m-l-xs" *ngIf="list.address">Адресс: {{list.address}}</div>
+        </div>
+      </div>
+      <div class="tell-flex app-list-user__item-container-extraInformation">
+        <div *ngIf="_JSONParse(list.tells).extra.length" class="tell-flex tell-align-items-center">Дополнительные номера:
+          <div *ngFor="let extraTell of _JSONParse(list.tells).extra" class="tell-flex">
+            <div class="tell-m-l-2xs app-list-user__item-container-extraInformation-item">{{extraTell}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tell-flex tell-align-items-center app-list-user__item-container-toolbarButton">
+        <button mat-icon-button color="accent" class="tell-m-r-2xs tell-m-l-2xs" (click)="_openDialog($event, true, list)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="tell-m-r-2xs" (click)="_deleteItem($event, list.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>

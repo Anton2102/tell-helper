@@ -1,0 +1,18 @@
+.app-list-modal {
+  &__inputMain {
+    width: 286px;
+  }
+
+  &__extra {
+    flex-wrap: wrap;
+
+    &-item {
+      height: 50px;
+      font-size: 16px;
+      background-color: #efefef;
+      border-radius: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<mat-toolbar class="app__header">
+  <div class="app__header-caption">Записная книжка</div>
+  <app-list-modal (closeDialogCallback)="_setLists('')"></app-list-modal>
+  <button disabled="{{!_isSelectedItem.length}}" mat-icon-button color="warn" (click)="_deleteItems()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <div class="tell-w-full tell-flex tell-justify-content-flex-end">
+    <mat-form-field color="accent" class="tell-m-l-2xs tell-m-r-2xs app__header-inputTell" appearance="outline">
+      <mat-label>Поиск по номеру телефона...</mat-label>
+      <input matInput [formControl]="_nameControl">
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+<app-list-user [lists]="_lists" (closeDialogCallback)="_setLists('')" (newItemEvent)="_setVisibleDelete($event)"></app-list-user>
