@@ -15,10 +15,6 @@
 Одна таблица. Обязательные поля <b>fio</b> и <b>tells</b><br>
 <b>Дамп лежит в корне</b>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Устанока и запуск
 После подключения и загрузки дамп-а бд, заходит в клиенскую(client) и серверные(api) папки, выкачиваем зависимости(npm i)
 - Запускаем сервер. Папка api - npm server или node app.js
